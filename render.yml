@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: att-bn
+    env: node
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        value: mongodb+srv://admin:admin@devpulse.pparj4i.mongodb.net/picode_attendances?retryWrites=true&w=majority&appName=devpulse
+      - key: ADMIN_PWD
+        value: Picodegroup@2025
+      - key: JWT_SECRET
+        value: urabyemerewe
+      - key: TELEPHONE
+        value: 0783186898
+      - key: CRYPT_KEY
+        value: rebaibikureba
+      - key: NODE_ENV
+        value: development
+
+databases:
+  - name: mongodb
+    databaseName: picode_attendances
+    user: admin
