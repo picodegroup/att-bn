@@ -7,6 +7,7 @@ import { adminSeeder } from "./seeders/adminSeeder.js";
 import attendanceRoutes from "./routes/attendance.routes.js";
 import usersRoutes from "./routes/users.routes.js";
 import cohortRoutes from "./routes/cohort.routes.js";
+import schoolRoutes from "./routes/school.routes.js";
 import "dotenv/config";
 
 const port = process.env.PORT || 5000;
@@ -31,7 +32,8 @@ app.use(express.json());
 
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/users", usersRoutes);
-app.use("/api/cohorts", cohortRoutes)
+app.use("/api/cohorts", cohortRoutes);
+app.use("/api/schools", schoolRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;

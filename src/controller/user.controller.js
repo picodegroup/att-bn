@@ -48,7 +48,7 @@ export const authUser = async (req, res, next) => {
 
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, telephone, password = "password123" } = req.body;
+    const { name, email, telephone, schoolName } = req.body;
 
     const userExists = await User.findOne({ email });
 
@@ -57,12 +57,11 @@ export const registerUser = async (req, res) => {
       return;
     }
 
-    // Create user with simplified fields as requested
     const user = await User.create({
       name,
       email,
-      telephone, // Add telephone field
-      password, // Default password that can be changed later
+      telephone,
+      schoolName,
     });
 
     if (user) {
@@ -71,6 +70,7 @@ export const registerUser = async (req, res) => {
         name: user.name,
         email: user.email,
         telephone: user.telephone,
+        schoolName: user.schoolName,
         role: user.role,
         isStudent: user.isStudent,
         paymentStatus: user.paymentStatus,
