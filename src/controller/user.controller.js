@@ -48,7 +48,7 @@ export const authUser = async (req, res, next) => {
 
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, telephone, schoolName } = req.body;
+    const { name, email, telephone, schoolName, combination } = req.body;
 
     const userExists = await User.findOne({ email });
 
@@ -62,6 +62,7 @@ export const registerUser = async (req, res) => {
       email,
       telephone,
       schoolName,
+      combination,
     });
 
     if (user) {
@@ -71,6 +72,7 @@ export const registerUser = async (req, res) => {
         email: user.email,
         telephone: user.telephone,
         schoolName: user.schoolName,
+        combination: user.combination,
         role: user.role,
         isStudent: user.isStudent,
         paymentStatus: user.paymentStatus,
